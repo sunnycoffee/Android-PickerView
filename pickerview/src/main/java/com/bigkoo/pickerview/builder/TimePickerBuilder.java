@@ -308,6 +308,17 @@ public class TimePickerBuilder {
         return this;
     }
 
+    /**
+     * 是否显示长期
+     *
+     * @param showLong
+     * @return
+     */
+    public TimePickerBuilder showLong(boolean showLong) {
+        mPickerOptions.isShowLong = showLong;
+        return this;
+    }
+
     public TimePickerView build() {
         return new TimePickerView(mPickerOptions);
     }

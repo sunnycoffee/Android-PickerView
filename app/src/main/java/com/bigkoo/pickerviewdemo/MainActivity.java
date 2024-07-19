@@ -197,8 +197,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
-                Toast.makeText(MainActivity.this, getTime(date), Toast.LENGTH_SHORT).show();
-                Log.i("pvTime", "onTimeSelect");
+                Toast.makeText(MainActivity.this, pvTime.getShowDate(date, "yyyy-MM-dd"), Toast.LENGTH_SHORT).show();
+                Log.i("pvTime", "onTimeSelect:" + pvTime.getShowDate(date, "yyyy-MM-dd") +";");
+
 
             }
         })
@@ -208,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.i("pvTime", "onTimeSelectChanged");
                     }
                 })
-                .setType(new boolean[]{true, true, true, true, true, true})
+                .setType(new boolean[]{true, true, true, false, false, false})
                 .isDialog(true) //默认设置false ，内部实现将DecorView 作为它的父控件。
                 .addOnCancelClickListener(new View.OnClickListener() {
                     @Override
@@ -219,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setItemVisibleCount(5) //若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
                 .setLineSpacingMultiplier(2.0f)
                 .isAlphaGradient(true)
+                .showLong(true)
                 .build();
 
         Dialog mDialog = pvTime.getDialog();

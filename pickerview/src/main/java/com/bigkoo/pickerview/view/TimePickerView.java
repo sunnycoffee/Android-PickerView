@@ -14,6 +14,7 @@ import com.bigkoo.pickerview.configure.PickerOptions;
 import com.bigkoo.pickerview.listener.ISelectTimeCallback;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -97,7 +98,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                 }
             });
         }
-
+        wheelTime.setShowLong(mPickerOptions.isShowLong);
         wheelTime.setLunarMode(mPickerOptions.isLunarCalendar);
 
         if (mPickerOptions.startYear != 0 && mPickerOptions.endYear != 0
@@ -286,4 +287,18 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     public boolean isDialog() {
         return mPickerOptions.isDialog;
     }
+
+    public String getShowDate(Date date, String pattern) {
+        if (mPickerOptions.isShowLong) {
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.get(Calendar.YEAR);
+            if (calendar.get(Calendar.YEAR) == wheelTime.getEndYear()) {
+                return "长期";
+            }
+        }
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        return format.format(date);
+    }
+
 }
