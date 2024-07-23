@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.bigkoo.pickerview.R;
 import com.contrarywind.adapter.WheelAdapter;
 import com.contrarywind.interfaces.IPickerViewData;
 import com.contrarywind.listener.LoopViewGestureListener;
